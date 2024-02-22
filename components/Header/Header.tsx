@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import AuthContext from "@/contexts/AuthContext";
 
 const Header = () => {
   const router = useRouter();
   const pathName = router.pathname;
+  const { user } = useContext(AuthContext);
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -44,16 +46,33 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
-            <div className="d-flex">
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => router.push("/auth/login")}
-              >
-                {" "}
-                login{" "}
-              </button>
-            </div>
+            {user ? (
+              <div>
+                <span
+                  style={{
+                    color: "green",
+                    fontSize: "1rem",
+                    border: "1px solid lightgreen",
+                    padding: "5px",
+                    backgroundColor: "white",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {user}
+                </span>
+              </div>
+            ) : (
+              <div className="d-flex">
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={() => router.push("/auth/login")}
+                >
+                  {" "}
+                  login{" "}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </nav>

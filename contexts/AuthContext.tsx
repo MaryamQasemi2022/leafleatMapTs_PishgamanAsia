@@ -33,8 +33,6 @@ const AuthProvider = ({ children }: PropType) => {
     }
   }, [error]);
   const login = async (user: User) => {
-    console.log(user);
-
     setError("");
     setUser("");
     try {

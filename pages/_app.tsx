@@ -1,5 +1,6 @@
 import Header from "@/components/Header/Header";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
